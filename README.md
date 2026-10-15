@@ -53,3 +53,6 @@ Test Case 6: Perform a simultaneous read/write
 ## References
 https://docs.amd.com/r/2023.1-English/ug901-vivado-synthesis/Memory-Inference-Capabilities
 * For introduction to Block RAM concepts and Verilog coding templates
+
+ECE520 Lab 3 Instructions
+* For general design guidelines
