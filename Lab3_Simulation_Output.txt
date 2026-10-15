@@ -1,0 +1,197 @@
+start_gui
+create_project 03-BRAM-FIFO C:/Xilinx/ECE520/03-BRAM-FIFO -part xc7z010clg400-1
+set_property board_part digilentinc.com:zybo-z7-10:part0:1.2 [current_project]
+file mkdir C:/Xilinx/ECE520/03-BRAM-FIFO/03-BRAM-FIFO.srcs/sources_1/new
+close [ open C:/Xilinx/ECE520/03-BRAM-FIFO/03-BRAM-FIFO.srcs/sources_1/new/bram.v w ]
+add_files C:/Xilinx/ECE520/03-BRAM-FIFO/03-BRAM-FIFO.srcs/sources_1/new/bram.v
+update_compile_order -fileset sources_1
+close [ open C:/Xilinx/ECE520/03-BRAM-FIFO/03-BRAM-FIFO.srcs/sources_1/new/sc_fifo.v w ]
+add_files C:/Xilinx/ECE520/03-BRAM-FIFO/03-BRAM-FIFO.srcs/sources_1/new/sc_fifo.v
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files C:/Xilinx/ECE520/03-BRAM-FIFO/03-BRAM-FIFO.srcs/sources_1/new/bram.v] -no_script -reset -force -quiet
+remove_files  C:/Xilinx/ECE520/03-BRAM-FIFO/03-BRAM-FIFO.srcs/sources_1/new/bram.v
+file mkdir C:/Xilinx/ECE520/03-BRAM-FIFO/03-BRAM-FIFO.srcs/sim_1/new
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open C:/Xilinx/ECE520/03-BRAM-FIFO/03-BRAM-FIFO.srcs/sim_1/new/tb_sc_fifo.v w ]
+add_files -fileset sim_1 C:/Xilinx/ECE520/03-BRAM-FIFO/03-BRAM-FIFO.srcs/sim_1/new/tb_sc_fifo.v
+update_compile_order -fileset sim_1
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+add_files -fileset sim_1 -norecurse C:/Users/jayse/OneDrive/Desktop/CSUN/ECE520/input_data.txt
+update_compile_order -fileset sim_1
+launch_simulation
+source tb_sc_fifo.tcl
+close_sim
+launch_simulation
+source tb_sc_fifo.tcl
+close_sim
+launch_simulation
+source tb_sc_fifo.tcl
+export_ip_user_files -of_objects  [get_files C:/Users/jayse/OneDrive/Desktop/CSUN/ECE520/input_data.txt] -no_script -reset -force -quiet
+remove_files  -fileset sim_1 C:/Users/jayse/OneDrive/Desktop/CSUN/ECE520/input_data.txt
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+add_files -fileset sim_1 -norecurse C:/Users/jayse/OneDrive/Desktop/CSUN/ECE520/input_data.txt
+close_sim
+launch_simulation
+source tb_sc_fifo.tcl
+close_sim
+launch_simulation
+source tb_sc_fifo.tcl
+close_sim
+launch_simulation
+source tb_sc_fifo.tcl
+run all
+close_sim
+launch_simulation
+source tb_sc_fifo.tcl
+run all
+restart
+run all
+close_sim
+launch_simulation
+source tb_sc_fifo.tcl
+restart
+run all
+srst | r_en | w_en | valid | din | dout | data_count | almost_empty | empty | almost_full | full
+  0      0     0      x    0000     xxxx          x          x           x        x          x
+  1      0     0      x    0000     xxxx          x          x           x        x          x
+  1      0     0      0    0000     0000          0          1           1        0          0
+  0      0     1      0    1111     0000          0          1           1        0          0
+  0      0     1      0    1111     0000          1          1           0        0          0
+  0      0     1      0    1111     0000          2          0           0        0          0
+  0      0     1      0    1111     0000          3          0           0        0          0
+  0      0     1      0    1111     0000          4          0           0        0          0
+  0      0     1      0    1111     0000          5          0           0        0          0
+  1      0     0      0    0000     0000          5          0           0        0          0
+  1      0     0      0    0000     0000          0          1           1        0          0
+  0      0     1      0    ffff     0000          0          1           1        0          0
+  0      0     1      0    ffff     0000          1          1           0        0          0
+  0      1     0      0    0000     0000          1          1           0        0          0
+  0      1     0      0    0000     0000          0          1           1        0          0
+  0      0     1      0    0000     0000          0          1           1        0          0
+  0      0     1      1    0000     ffff          1          1           0        0          0
+  0      1     0      1    0000     ffff          1          1           0        0          0
+  0      1     0      0    0000     0000          0          1           1        0          0
+  0      0     1      0    aaaa     0000          0          1           1        0          0
+  0      0     1      1    aaaa     0000          1          1           0        0          0
+  0      1     0      1    0000     0000          1          1           0        0          0
+  0      1     0      0    0000     0000          0          1           1        0          0
+  1      0     0      0    0000     0000          0          1           1        0          0
+  1      0     0      1    0000     aaaa          0          1           1        0          0
+  0      0     1      1    5555     aaaa          0          1           1        0          0
+  0      0     1      0    5555     0000          1          1           0        0          0
+  0      0     1      0    5555     0000          2          0           0        0          0
+  0      0     1      0    5555     0000          3          0           0        0          0
+  0      0     1      0    5555     0000          4          0           0        0          0
+  0      0     1      0    5555     0000          5          0           0        0          0
+  0      0     1      0    5555     0000          6          0           0        0          0
+  0      0     1      0    5555     0000          7          0           0        0          0
+  0      0     1      0    5555     0000          8          0           0        0          0
+  0      0     1      0    5555     0000          9          0           0        0          0
+  0      0     1      0    5555     0000         10          0           0        0          0
+  0      0     1      0    5555     0000         11          0           0        0          0
+  0      0     1      0    5555     0000         12          0           0        0          0
+  0      0     1      0    5555     0000         13          0           0        0          0
+  0      0     1      0    5555     0000         14          0           0        0          0
+  0      0     1      0    5555     0000         15          0           0        0          0
+  0      0     1      0    5555     0000         16          0           0        0          0
+  0      0     1      0    5555     0000         17          0           0        0          0
+  0      0     1      0    5555     0000         18          0           0        0          0
+  0      0     1      0    5555     0000         19          0           0        0          0
+  0      0     1      0    5555     0000         20          0           0        0          0
+  0      0     1      0    5555     0000         21          0           0        0          0
+  0      0     1      0    5555     0000         22          0           0        0          0
+  0      0     1      0    5555     0000         23          0           0        0          0
+  0      0     1      0    5555     0000         24          0           0        0          0
+  0      0     1      0    5555     0000         25          0           0        0          0
+  0      0     1      0    5555     0000         26          0           0        0          0
+  0      0     1      0    5555     0000         27          0           0        0          0
+  0      0     1      0    5555     0000         28          0           0        0          0
+  0      0     1      0    5555     0000         29          0           0        0          0
+  0      0     1      0    5555     0000         30          0           0        0          0
+  0      0     1      0    5555     0000         31          0           0        1          0
+  0      0     1      0    5555     0000         32          0           0        1          1
+  0      1     0      0    0000     0000         32          0           0        1          1
+  0      1     0      0    0000     0000         31          0           0        1          0
+  0      1     0      1    0000     5555         30          0           0        0          0
+  0      1     0      1    0000     5555         29          0           0        0          0
+  0      1     0      1    0000     5555         28          0           0        0          0
+  0      1     0      1    0000     5555         27          0           0        0          0
+  0      1     0      1    0000     5555         26          0           0        0          0
+  0      1     0      1    0000     5555         25          0           0        0          0
+  0      1     0      1    0000     5555         24          0           0        0          0
+  0      1     0      1    0000     5555         23          0           0        0          0
+  0      1     0      1    0000     5555         22          0           0        0          0
+  0      1     0      1    0000     5555         21          0           0        0          0
+  0      1     0      1    0000     5555         20          0           0        0          0
+  0      1     0      1    0000     5555         19          0           0        0          0
+  0      1     0      1    0000     5555         18          0           0        0          0
+  0      1     0      1    0000     5555         17          0           0        0          0
+  0      1     0      1    0000     5555         16          0           0        0          0
+  0      1     0      1    0000     5555         15          0           0        0          0
+  0      1     0      1    0000     5555         14          0           0        0          0
+  0      1     0      1    0000     5555         13          0           0        0          0
+  0      1     0      1    0000     5555         12          0           0        0          0
+  0      1     0      1    0000     5555         11          0           0        0          0
+  0      1     0      1    0000     5555         10          0           0        0          0
+  0      1     0      1    0000     5555          9          0           0        0          0
+  0      1     0      1    0000     5555          8          0           0        0          0
+  0      1     0      1    0000     5555          7          0           0        0          0
+  0      1     0      1    0000     5555          6          0           0        0          0
+  0      1     0      1    0000     5555          5          0           0        0          0
+  0      1     0      1    0000     5555          4          0           0        0          0
+  0      1     0      1    0000     5555          3          0           0        0          0
+  0      1     0      1    0000     5555          2          0           0        0          0
+  0      1     0      1    0000     5555          1          1           0        0          0
+  0      1     0      1    0000     5555          0          1           1        0          0
+  1      0     0      1    0000     5555          0          1           1        0          0
+  0      0     1      1    5555     5555          0          1           1        0          0
+  0      0     1      0    5555     0000          1          1           0        0          0
+  0      0     1      0    5555     0000          2          0           0        0          0
+  0      0     1      0    5555     0000          3          0           0        0          0
+  0      0     1      0    5555     0000          4          0           0        0          0
+  0      0     1      0    5555     0000          5          0           0        0          0
+  0      0     1      0    5555     0000          6          0           0        0          0
+  0      0     1      0    5555     0000          7          0           0        0          0
+  0      0     1      0    5555     0000          8          0           0        0          0
+  0      0     1      0    5555     0000          9          0           0        0          0
+  0      0     1      0    5555     0000         10          0           0        0          0
+  0      0     1      0    5555     0000         11          0           0        0          0
+  0      0     1      0    5555     0000         12          0           0        0          0
+  0      0     1      0    5555     0000         13          0           0        0          0
+  0      0     1      0    5555     0000         14          0           0        0          0
+  0      0     1      0    5555     0000         15          0           0        0          0
+  0      0     1      0    5555     0000         16          0           0        0          0
+  0      0     1      0    5555     0000         17          0           0        0          0
+  0      0     1      0    5555     0000         18          0           0        0          0
+  0      0     1      0    5555     0000         19          0           0        0          0
+  0      0     1      0    5555     0000         20          0           0        0          0
+  0      0     1      0    5555     0000         21          0           0        0          0
+  0      0     1      0    5555     0000         22          0           0        0          0
+  0      0     1      0    5555     0000         23          0           0        0          0
+  0      0     1      0    5555     0000         24          0           0        0          0
+  0      0     1      0    5555     0000         25          0           0        0          0
+  0      0     1      0    5555     0000         26          0           0        0          0
+  0      0     1      0    5555     0000         27          0           0        0          0
+  0      0     1      0    5555     0000         28          0           0        0          0
+  0      0     1      0    5555     0000         29          0           0        0          0
+  0      0     1      0    5555     0000         30          0           0        0          0
+  0      0     1      0    5555     0000         31          0           0        1          0
+  0      0     1      0    5555     0000         32          0           0        1          1
+  0      0     1      0    1111     0000         32          0           0        1          1
+  0      1     0      0    0000     0000         32          0           0        1          1
+  0      1     0      0    0000     0000         31          0           0        1          0
+  1      0     0      0    0000     0000         31          0           0        1          0
+  1      0     0      1    0000     5555          0          1           1        0          0
+  0      0     1      1    aaaa     5555          0          1           1        0          0
+  0      0     1      0    aaaa     0000          1          1           0        0          0
+  0      0     1      0    aaaa     0000          2          0           0        0          0
+  0      0     1      0    aaaa     0000          3          0           0        0          0
+  0      0     1      0    aaaa     0000          4          0           0        0          0
+  0      0     1      0    aaaa     0000          5          0           0        0          0
+  0      1     1      0    5555     0000          5          0           0        0          0
+  0      1     1      1    5555     aaaa          5          0           0        0          0
+  0      1     1      1    5555     5555          5          0           0        0          0
+$finish called at time : 12400 ns : File "C:/Xilinx/ECE520/03-BRAM-FIFO/03-BRAM-FIFO.srcs/sim_1/new/tb_sc_fifo.v" Line 86
